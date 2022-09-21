@@ -1,10 +1,9 @@
-# mbentley/apt-cacher-ng
+# modem7/docker-apt-cacher-ng
 
-docker image for apt-cacher-ng
-based off of debian:bullseye
+Docker image for apt-cacher-ng based off of debian:bullseye-slim
 
 To pull this image:
-`docker pull mbentley/apt-cacher-ng`
+`docker pull modem7/apt-cacher-ng`
 
 ## Image Tags
 
@@ -18,19 +17,15 @@ There are also architecture specific tags if you wish to use an explicit archite
 * `latest-arm64`
 * `latest-armv7l`
 
-### Date Specific Tags
-
-The `latest` tags also have unique manifests that are generated daily.  These are in the format `latest-YYYYMMDD` (e.g. - `latest-20220215`) and can be viewed on [Docker Hub](https://hub.docker.com/repository/docker/mbentley/apt-cacher-ng/tags?page=1&ordering=last_updated&name=latest-20).  Each one of these tags will be generated daily and is essentially a point in time snapshot of the `latest` tag's manifest that you can pin to if you wish.  Please note that these tags will remain available on Docker Hub for __6 months__ and will not receive security fixes.  You will need to update to newer tags as they are published in order to get updated images.  If you do not care about specific image digests to pin to, I would suggest just using the `latest` tag.
-
 ## Example usage
 
 ```
 docker run -d \
   --name apt-cacher-ng \
   -p 3142:3142 \
-  -e TZ="US/Eastern" \
+  -e TZ="Europe/Londson" \
   -v /data/apt-cacher-ng:/var/cache/apt-cacher-ng \
-  mbentley/apt-cacher-ng
+  modem7/apt-cacher-ng
 ```
 
 This image runs `apt-cacher-ng`, `cron`, and `rsyslogd` to ensure that apt-cacher-ng functions properly with scheduled jobs and appropriate logging.
@@ -62,3 +57,5 @@ You can also update the /etc/apt-cacher-ng/acng.conf and add one or more `PassTh
 PassThroughPattern: get\.docker\.com
 PassThroughPattern: download\.virtualbox\.org
 ```
+
+Based on the work from https://github.com/mbentley/docker-apt-cacher-ng and https://github.com/sameersbn/docker-apt-cacher-ng
