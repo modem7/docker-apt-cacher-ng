@@ -1,5 +1,5 @@
 # syntax = docker/dockerfile-upstream:master-labs
-FROM debian:bullseye-slim
+FROM debian:bullseye-20220912-slim
 LABEL maintainer="Modem7"
 
 RUN --mount=type=cache,id=aptcache,target=/var/cache/apt,sharing=locked \

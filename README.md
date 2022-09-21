@@ -17,7 +17,7 @@ The `latest` tag has multi-arch support for `amd64`, and `arm64` and will automa
 docker run -d \
   --name apt-cacher-ng \
   -p 3142:3142 \
-  -e TZ="Europe/Londson" \
+  -e TZ="Europe/London" \
   -v /data/apt-cacher-ng:/var/cache/apt-cacher-ng \
   modem7/apt-cacher-ng
 ```
