@@ -45,8 +45,7 @@ HEALTHCHECK --interval=10s --timeout=10s --retries=3 --start-period=20s \
     CMD wget -q -t1 -O /dev/null http://localhost:3142/acng-report.html || exit 1
 
 ENTRYPOINT ["/tini", "-gv", "--", "/entrypoint.sh"]
-#CMD ["/etc/init.d/apt-cacher-ng", "start", "&&", "tail", "-f", "/var/log/apt-cacher-ng/*"]
-CMD /etc/init.d/apt-cacher-ng start && tail -f /var/log/apt-cacher-ng/*
+CMD ["/bin/bash", "-c", "/etc/init.d/apt-cacher-ng start; tail -f /var/log/apt-cacher-ng/*"]
 
 
 
