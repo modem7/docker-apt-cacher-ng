@@ -14,7 +14,7 @@ steps:
   pull: if-not-exists
   commands:
     - hadolint --version
-    - hadolint base-fullbuild/Dockerfile*
+    - hadolint Dockerfile
 
 - name: FullBuild
   image: thegeeklab/drone-docker-buildx
