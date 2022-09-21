@@ -1,4 +1,4 @@
-# syntax = docker/dockerfile-upstream:master-labs
+# syntax = docker/dockerfile:latest
 FROM debian:bullseye-20220912-slim
 LABEL maintainer="Modem7"
 
