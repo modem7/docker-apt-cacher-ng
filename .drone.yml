@@ -9,12 +9,12 @@ platform:
   arch: amd64
   
 steps:
-- name: Lint Dockerfile
-  image: hadolint/hadolint:latest-alpine
-  pull: if-not-exists
-  commands:
-    - hadolint --version
-    - hadolint Dockerfile
+# - name: Lint Dockerfile
+  # image: hadolint/hadolint:latest-alpine
+  # pull: if-not-exists
+  # commands:
+    # - hadolint --version
+    # - hadolint Dockerfile
 
 - name: FullBuild
   image: thegeeklab/drone-docker-buildx

@@ -35,8 +35,8 @@ RUN <<EOF
 EOF
 
 ARG TINI_VERSION='v0.19.0'
-ADD --link --chmod=755 https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
 COPY --link --chmod=755 entrypoint.sh /
+ADD --link --chmod=755 https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
 
 VOLUME ["/var/cache/apt-cacher-ng"]
 EXPOSE 3142/tcp
