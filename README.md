@@ -1,6 +1,12 @@
 # modem7/docker-apt-cacher-ng
+[![Docker Pulls](https://img.shields.io/docker/pulls/modem7/apt-cacher-ng)](https://hub.docker.com/r/modem7/apt-cacher-ng)
+[![Docker Image Size (tag)](https://img.shields.io/docker/image-size/modem7/apt-cacher-ng/latest)](https://hub.docker.com/r/modem7/apt-cacher-ng)
+[![Build Status](https://drone.modem7.com/api/badges/modem7/docker-apt-cacher-ng/status.svg)](https://drone.modem7.com/modem7/docker-apt-cacher-ng)
+[![GitHub last commit](https://img.shields.io/github/last-commit/modem7/docker-apt-cacher-ng)](https://github.com/modem7/docker-apt-cacher-ng)
 
 Docker image for apt-cacher-ng based off of debian:bullseye-slim
+
+
 
 To pull this image:
 `docker pull modem7/apt-cacher-ng`
