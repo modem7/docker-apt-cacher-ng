@@ -52,4 +52,4 @@ PassThroughPattern: get\.docker\.com
 PassThroughPattern: download\.virtualbox\.org
 ```
 
-Based on the work from https://github.com/mbentley/docker-apt-cacher-ng and https://github.com/sameersbn/docker-apt-cacher-ng
+Based on the work from [mbentley](https://github.com/mbentley/docker-apt-cacher-ng) and [sameersbn](https://github.com/sameersbn/docker-apt-cacher-ng).
