@@ -28,6 +28,29 @@ docker run -d \
   modem7/apt-cacher-ng
 ```
 
+## Docker Compose example
+```
+ ################
+ #APT-Cacher-NG##
+ ################
+
+  apt-cacher-ng:
+    container_name: APT-Cacher-NG
+    hostname: APT-Cacher-NG
+    restart: always
+    image: modem7/apt-cacher-ng
+    networks:
+      pihole:
+        ipv4_address: '172.22.0.111'
+    ports:
+    - "3142:3142"
+    volumes:
+      - apt-cacher-ng:/var/cache/apt-cacher-ng
+
+volumes:
+  apt-cacher-ng:
+```
+
 This image runs `apt-cacher-ng`, `cron`, and `rsyslogd` to ensure that apt-cacher-ng functions properly with scheduled jobs and appropriate logging.
 
 In order to configure a host to make use of apt-cacher-ng on a box, you should create a file on the host `/etc/apt/apt.conf` with the following lines:
