@@ -12,9 +12,9 @@ Apt-Cache-ng is a caching proxy. Specialized for package files from Linux distri
 
 A caching proxy have the following benefits:
 
-Lower latency
-Reduce WAN traffic
-Higher speed for cached contents
+- Lower latency
+- Reduce WAN traffic
+- Higher speed for cached contents
 
 ---
 
