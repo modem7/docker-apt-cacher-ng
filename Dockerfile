@@ -12,6 +12,7 @@ RUN --mount=type=cache,id=aptcache,target=/var/cache/apt,sharing=locked \
     DEBIAN_FRONTEND=noninteractive \
                     apt-get install \
                     --no-install-recommends -y \
+                    avahi-daemon \
                     apt-cacher-ng \
                     ca-certificates \
                     cron \
@@ -22,16 +23,28 @@ EOF
 
 RUN <<EOF
     set -xe
+    # Set permissions
     chown -R apt-cacher-ng:apt-cacher-ng /var/run/apt-cacher-ng
+
+    # Modify config files
     sed -i "s/# PassThroughPattern: .* # this would allow CONNECT to everything/PassThroughPattern: .* # this would allow CONNECT to everything/g" /etc/apt-cacher-ng/acng.conf
     sed -i "s/# ReuseConnections: 1/ReuseConnections: 1/g" /etc/apt-cacher-ng/acng.conf
     sed -i "s/# UnbufferLogs: 0/UnbufferLogs: 1/g" /etc/apt-cacher-ng/acng.conf
     sed -i "s/ExThreshold: 4/ExThreshold: 7/g" /etc/apt-cacher-ng/acng.conf
     sed -i "s/# SocketPath: \/var\/run\/apt-cacher-ng\/socket/SocketPath=\/var\/run\/apt-cacher-ng\/socket/g" /etc/apt-cacher-ng/acng.conf
     sed -i "s/# PidFile: \/var\/run\/apt-cacher-ng\/pid/pidfile=\/var\/run\/apt-cacher-ng\/pid/g" /etc/apt-cacher-ng/acng.conf
+    echo "Remap-dockerrep:  file:docker_mirrors /docker ; file:backends_docker # Docker Archives" >> /etc/apt-cacher-ng/acng.conf
     sed -i "s/# ForeGround: 0/ForeGround: 1/g" /etc/apt-cacher-ng/acng.conf
     sed -i "s/size 10M/size 100M/g" /etc/logrotate.d/apt-cacher-ng
-    sed -i '/imklog/s/^/#/' /etc/rsyslog.conf
+    sed -i "/imklog/s/^/#/" /etc/rsyslog.conf
+
+    # Create Docker mirrors
+    echo 'https://download.docker.com/linux/ubuntu' >> /usr/lib/apt-cacher-ng/docker_mirrors
+    echo 'https://download.docker.com/linux/centos' >> /usr/lib/apt-cacher-ng/docker_mirrors
+    echo 'https://download.docker.com/linux/debian' >> /usr/lib/apt-cacher-ng/docker_mirrors
+    echo 'https://download.docker.com/linux/fedora' >> /usr/lib/apt-cacher-ng/docker_mirrors
+    echo 'https://download.docker.com/linux/raspbian' >> /usr/lib/apt-cacher-ng/docker_mirrors
+    echo 'https://download.docker.com/linux/rhel' >> /usr/lib/apt-cacher-ng/docker_mirrors
 EOF
 
 ARG TINI_VERSION='v0.19.0'

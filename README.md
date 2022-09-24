@@ -27,6 +27,11 @@ To pull this image:
 
 The `latest` tag has multi-arch support for `amd64`, and `arm64` and will automatically pull the correct tag based on your system's architecture.
 
+## Environment Variables
+| Variable | Possible Values | Description |
+| :----: | --- | --- |
+| PRECACHE | enabled or yes | Enables the precache for Debian, Ubuntu, Debian Security, and Docker |
+
 ## Example usage
 
 ```
@@ -67,6 +72,11 @@ In order to configure a host to make use of apt-cacher-ng on a box, you should c
 
 ```
 Acquire::http::Proxy "http://<docker-host>:3142";
+```
+
+Or a one liner for Debian/Ubuntu hosts:
+```
+echo "Acquire::http::Proxy \"http://<docker-host>:3142\";" | sudo tee /etc/apt/apt.conf.d/00proxy
 ```
 
 You can also bypass the apt caching server on a per client basis by using the following syntax in your `/etc/apt/apt.conf` file:
