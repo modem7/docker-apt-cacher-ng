@@ -6,7 +6,17 @@
 
 Docker image for apt-cacher-ng based off of debian:bullseye-slim
 
+---
 
+Apt-Cache-ng is A caching proxy. Specialized for package files from Linux distributors, primarily for Debian (and Debian based) distributions but not limited to those.
+
+A caching proxy have the following benefits:
+
+Lower latency
+Reduce WAN traffic
+Higher speed for cached contents
+
+---
 
 To pull this image:
 `docker pull modem7/apt-cacher-ng`
