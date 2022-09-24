@@ -33,7 +33,7 @@ RUN <<EOF
     sed -i "s/ExThreshold: 4/ExThreshold: 7/g" /etc/apt-cacher-ng/acng.conf
     sed -i "s/# SocketPath: \/var\/run\/apt-cacher-ng\/socket/SocketPath=\/var\/run\/apt-cacher-ng\/socket/g" /etc/apt-cacher-ng/acng.conf
     sed -i "s/# PidFile: \/var\/run\/apt-cacher-ng\/pid/pidfile=\/var\/run\/apt-cacher-ng\/pid/g" /etc/apt-cacher-ng/acng.conf
-    echo "Remap-dockerrep:  file:docker_mirrors /docker ; file:backends_docker # Docker Archives" >> /etc/apt-cacher-ng/acng.conf
+    echo "Remap-dockerrep:  file:docker_mirrors /docker ; file:docker_mirrors # Docker Archives" >> /etc/apt-cacher-ng/acng.conf
     sed -i "s/# ForeGround: 0/ForeGround: 1/g" /etc/apt-cacher-ng/acng.conf
     sed -i "s/size 10M/size 100M/g" /etc/logrotate.d/apt-cacher-ng
     sed -i "/imklog/s/^/#/" /etc/rsyslog.conf
