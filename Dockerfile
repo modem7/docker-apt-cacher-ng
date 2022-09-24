@@ -12,8 +12,8 @@ RUN --mount=type=cache,id=aptcache,target=/var/cache/apt,sharing=locked \
     DEBIAN_FRONTEND=noninteractive \
                     apt-get install \
                     --no-install-recommends -y \
-                    avahi-daemon \
                     apt-cacher-ng \
+                    avahi-daemon \
                     ca-certificates \
                     cron \
                     logrotate \
