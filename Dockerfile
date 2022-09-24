@@ -33,7 +33,7 @@ RUN <<EOF
     sed -i "s/ExThreshold: 4/ExThreshold: 7/g" /etc/apt-cacher-ng/acng.conf
     sed -i "s/# SocketPath: \/var\/run\/apt-cacher-ng\/socket/SocketPath=\/var\/run\/apt-cacher-ng\/socket/g" /etc/apt-cacher-ng/acng.conf
     sed -i "s/# PidFile: \/var\/run\/apt-cacher-ng\/pid/pidfile=\/var\/run\/apt-cacher-ng\/pid/g" /etc/apt-cacher-ng/acng.conf
-    echo "Remap-dockerrep:  file:docker_mirrors /docker ; file:docker_mirrors # Docker Archives" >> /etc/apt-cacher-ng/acng.conf
+    echo "Remap-dockerrep:  file:docker_mirrors /docker ; file:backends_docker # Docker Archives" >> /etc/apt-cacher-ng/acng.conf
     sed -i "s/# ForeGround: 0/ForeGround: 1/g" /etc/apt-cacher-ng/acng.conf
     sed -i "s/size 10M/size 100M/g" /etc/logrotate.d/apt-cacher-ng
     sed -i "/imklog/s/^/#/" /etc/rsyslog.conf
@@ -45,6 +45,14 @@ RUN <<EOF
     echo 'https://download.docker.com/linux/fedora' >> /usr/lib/apt-cacher-ng/docker_mirrors
     echo 'https://download.docker.com/linux/raspbian' >> /usr/lib/apt-cacher-ng/docker_mirrors
     echo 'https://download.docker.com/linux/rhel' >> /usr/lib/apt-cacher-ng/docker_mirrors
+
+    # Create Docker backends
+    echo 'https://download.docker.com/linux/ubuntu' >> /etc/apt-cacher-ng/backends_docker
+    echo 'https://download.docker.com/linux/centos' >> /etc/apt-cacher-ng/backends_docker
+    echo 'https://download.docker.com/linux/debian' >> /etc/apt-cacher-ng/backends_docker
+    echo 'https://download.docker.com/linux/fedora' >> /etc/apt-cacher-ng/backends_docker
+    echo 'https://download.docker.com/linux/raspbian' >> /etc/apt-cacher-ng/backends_docker
+    echo 'https://download.docker.com/linux/rhel' >> /etc/apt-cacher-ng/backends_docker
 EOF
 
 ARG TINI_VERSION='v0.19.0'
