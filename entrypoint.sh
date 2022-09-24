@@ -9,7 +9,9 @@ echo -e "done. Timezone is set to $TZ"
 echo -n "INFO: Checking if Precache is enabled..."
 if [[ "$PRECACHE" =~ ^(enabled|yes)$ ]]; then
     echo -n "Applying Precache settings..."
-    echo 'PrecacheFor: debrep/dists/*/*/*/Packages* uburep/dists/*/*/*/Packages* secdeb/dists/*/*/*/Packages* dockerrep/dists/*/*/*/Packages*' >> /etc/apt-cacher-ng/acng.conf
+    PRECACHELINE='PrecacheFor: debrep/dists/*/*/*/Packages* uburep/dists/*/*/*/Packages* secdeb/dists/*/*/*/Packages* dockerrep/dists/*/*/*/Packages*'
+    PRECACHEFILE='/etc/apt-cacher-ng/acng.conf'
+    grep -qF -- "$PRECACHELINE" "$PRECACHEFILE" || echo "$PRECACHELINE" >> "$PRECACHEFILE"
     echo -e "done."
 else
     echo -e "Precache disabled."
