@@ -1,5 +1,5 @@
 # syntax = docker/dockerfile:latest
-FROM debian:bullseye-20220912-slim
+FROM ubuntu:jammy-20220815
 LABEL maintainer="Modem7"
 
 RUN --mount=type=cache,id=aptcache,target=/var/cache/apt,sharing=locked \
