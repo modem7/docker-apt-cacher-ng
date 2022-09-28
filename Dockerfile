@@ -39,20 +39,22 @@ RUN <<EOF
     sed -i "/imklog/s/^/#/" /etc/rsyslog.conf
 
     # Create Docker mirrors
-    echo 'https://download.docker.com/linux/ubuntu' >> /usr/lib/apt-cacher-ng/docker_mirrors
-    echo 'https://download.docker.com/linux/centos' >> /usr/lib/apt-cacher-ng/docker_mirrors
-    echo 'https://download.docker.com/linux/debian' >> /usr/lib/apt-cacher-ng/docker_mirrors
-    echo 'https://download.docker.com/linux/fedora' >> /usr/lib/apt-cacher-ng/docker_mirrors
-    echo 'https://download.docker.com/linux/raspbian' >> /usr/lib/apt-cacher-ng/docker_mirrors
-    echo 'https://download.docker.com/linux/rhel' >> /usr/lib/apt-cacher-ng/docker_mirrors
+    echo 'https://download.docker.com/linux' >> /usr/lib/apt-cacher-ng/docker_mirrors
+    # echo 'https://download.docker.com/linux/ubuntu' >> /usr/lib/apt-cacher-ng/docker_mirrors
+    # echo 'https://download.docker.com/linux/centos' >> /usr/lib/apt-cacher-ng/docker_mirrors
+    # echo 'https://download.docker.com/linux/debian' >> /usr/lib/apt-cacher-ng/docker_mirrors
+    # echo 'https://download.docker.com/linux/fedora' >> /usr/lib/apt-cacher-ng/docker_mirrors
+    # echo 'https://download.docker.com/linux/raspbian' >> /usr/lib/apt-cacher-ng/docker_mirrors
+    # echo 'https://download.docker.com/linux/rhel' >> /usr/lib/apt-cacher-ng/docker_mirrors
 
     # Create Docker backends
-    echo 'https://download.docker.com/linux/ubuntu' >> /etc/apt-cacher-ng/backends_docker
-    echo 'https://download.docker.com/linux/centos' >> /etc/apt-cacher-ng/backends_docker
-    echo 'https://download.docker.com/linux/debian' >> /etc/apt-cacher-ng/backends_docker
-    echo 'https://download.docker.com/linux/fedora' >> /etc/apt-cacher-ng/backends_docker
-    echo 'https://download.docker.com/linux/raspbian' >> /etc/apt-cacher-ng/backends_docker
-    echo 'https://download.docker.com/linux/rhel' >> /etc/apt-cacher-ng/backends_docker
+    echo 'https://download.docker.com/linux' >> /etc/apt-cacher-ng/backends_docker
+    # echo 'https://download.docker.com/linux/ubuntu' >> /etc/apt-cacher-ng/backends_docker
+    # echo 'https://download.docker.com/linux/centos' >> /etc/apt-cacher-ng/backends_docker
+    # echo 'https://download.docker.com/linux/debian' >> /etc/apt-cacher-ng/backends_docker
+    # echo 'https://download.docker.com/linux/fedora' >> /etc/apt-cacher-ng/backends_docker
+    # echo 'https://download.docker.com/linux/raspbian' >> /etc/apt-cacher-ng/backends_docker
+    # echo 'https://download.docker.com/linux/rhel' >> /etc/apt-cacher-ng/backends_docker
 EOF
 
 ARG TINI_VERSION='v0.19.0'
