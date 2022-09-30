@@ -102,7 +102,7 @@ PassThroughPattern: download\.virtualbox\.org
 ```
 
 ## Getting https://download.docker.com to cache
-If you want to cache your Docker.com downloads, you'll need to change the repo from https to http.
+If you want to cache your Docker.com downloads, you'll need to change the repo on your client from https to http.
 
 For example, if you're following the [Ubuntu install](https://docs.docker.com/engine/install/ubuntu/) instructions, you'll need to do change the following:
 Instead of
