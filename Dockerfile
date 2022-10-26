@@ -1,5 +1,5 @@
 # syntax = docker/dockerfile:latest
-FROM ubuntu:jammy-20220815
+FROM ubuntu:jammy
 LABEL maintainer="Modem7"
 
 RUN --mount=type=cache,id=aptcache,target=/var/cache/apt,sharing=locked \
