@@ -1,5 +1,5 @@
 # syntax = docker/dockerfile:latest
-FROM ubuntu:22.10
+FROM ubuntu:kinetic-20230624
 LABEL maintainer="Modem7"
 
 RUN --mount=type=cache,id=aptcache,target=/var/cache/apt,sharing=locked \
